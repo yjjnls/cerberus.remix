@@ -1,0 +1,17 @@
+
+mirror:
+  http:
+    server:
+       http://172.16.0.119/WMS/mirrors:
+          - gstreamer.freedesktop.org
+          - ftp.gnome.org
+          - ftp.gnu.org
+          - www.opengl.org
+          - www.openssl.org
+          - www.tortall.net
+          - github.com
+  git:
+    'git://anongit.freedesktop.org/gstreamer-sdk/windows-external-sdk.git' : 'https://github.com/freedesktop/gstreamer-sdk-windows-external-sdk.git'
+
+    
+
