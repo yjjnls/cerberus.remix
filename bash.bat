@@ -11,5 +11,6 @@ if not exist %__bash__% (
    exit 1
 )
 pushd %__dir__%
+PATH=%__dir__%\MinGW\msys\1.0\bin;%PATH%
 if "x%1" == "x" ( %__bash__%  --init-file init.sh ) else %__bash__%  %1
 popd

@@ -14,5 +14,9 @@ mirror:
   git:
     'git://anongit.freedesktop.org/gstreamer-sdk/windows-external-sdk.git' : 'https://github.com/freedesktop/gstreamer-sdk-windows-external-sdk.git'
 
-    
+releases:
+  directory:
+    windows: 'd:/cerberus/releases'
+    linux: '/cerberus/releases'
+  repo: 'http://127.0.0.1/WMS/mirrors/releases'    
 
