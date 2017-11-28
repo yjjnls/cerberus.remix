@@ -1,9 +1,9 @@
-MinGW: 'http://127.0.0.1/WMS/mirrors/MinGW.zip'
+MinGW: 'http://172.16.0.119/WMS/mirrors/MinGW.zip'
 
 mirror:
   http:
     server:
-       http://127.0.0.1/WMS/mirrors:
+       http://172.16.0.119/WMS/mirrors:
           - gstreamer.freedesktop.org
           - ftp.gnome.org
           - ftp.gnu.org
@@ -18,5 +18,5 @@ releases:
   directory:
     windows: 'd:/cerberus/releases'
     linux: '/cerberus/releases'
-  repo: 'http://127.0.0.1/WMS/mirrors/releases'    
+  repo: 'http://172.16.0.119/WMS/mirrors/releases'    
 
