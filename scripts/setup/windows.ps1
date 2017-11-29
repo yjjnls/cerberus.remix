@@ -5,43 +5,13 @@ $__dir__ = Split-Path -Parent $__file__
 $__scripts__ = Split-Path -Parent $__dir__
 $__cerberus__ = Split-Path -Parent $__scripts__
 
-Function Quit
-{
-    Write-Host ""
-    Write-Host $args
-    Write-Host ""
-	Write-Host press any key to exit setup
-    Write-Host ""
 
-	pause
-	exit 100    
-}
 
 $config = $__cerberus__ + "\config.yaml"
 $is_exits = Test-Path $config
 if ( -not $is_exits ){
-    Quit "config file :" $config  " NOT exists "
-}
-
-Function PythonCheck
-{
-    python --version
-    if ( -not $? ){
-        throw "Can not find python, please install it."        
-    }
-
-    pip --version
-    if ( -not $? ){
-        throw "Can not find python PIP , please install it."
-    }#
-    python -c "import yaml"
-    if ( -not $? ){
-        pip install pyyaml
-        if ( -not $? ){
-            throw install pyyaml failed.
-        }
-    }
-
+    Write-Host "config file :" $config  " NOT exists "
+    exit 1
 }
 
 Function Download
@@ -52,6 +22,8 @@ Function Download
         throw "Download Filed ! "
     }
 }
+
+
 
 Function PyScript
 {
@@ -65,6 +37,45 @@ Function PyScript
     python -c $code
 }
 
+
+Function PythonCheck
+{
+    python --version
+    if ( -not $? ){
+        throw "Can not find python, please install it."        
+    }
+
+    python -c "import yaml"
+    if ( -not $? ){
+
+        $version=3.12
+        $url = -Join("https://github.com/yaml/pyyaml/archive/",$version,".zip")
+        $cache_dir = (Join-Path $__cerberus__ "cache")
+        $tarball = ( Join-Path $cache_dir "pyyaml.zip")
+        Download $url $tarball
+        if ( -not $? ){
+            throw "donwload pyyaml failed."
+        }
+
+        $code  ="import zipfile;f=zipfile.ZipFile(r'" + $tarball + "','r');"
+        $code +="f.extractall(r'" + $cache_dir +"');"
+        python -c $code
+        if ( -not $? ){
+            throw "extract pyyaml failed"
+        }
+
+        $setupf = "pyyaml-" + $version 
+        $setupf = (Join-Path $cache_dir $setupf)
+        cd $setupf
+        python setup.py install
+        if( -not $? ){
+            throw "install pyyaml failed."
+        }
+
+    }
+
+}
+
 Function InstallMinGW
 {
     $location = PyScript(
@@ -73,7 +84,7 @@ Function InstallMinGW
     if(!$?){
         throw "read MinGW install package from config.yaml failed."
     }
-    write-host $location "!!!!"
+
     $cache_dir = Join-Path $__cerberus__ 'cache'
     if ( ! (Test-Path $cache_dir) ) {
         md $cache_dir
@@ -82,7 +93,13 @@ Function InstallMinGW
     if( ! (Test-Path $tarball) ){
         Download $location  $tarball 
     }
-    Expand-Archive -Path $tarball -DestinationPath $__cerberus__
+
+    $code  ="import zipfile;f=zipfile.ZipFile(r'" + $tarball + "','r');"
+    $code +="f.extractall(r'" + $__cerberus__ +"');"
+    python -c $code
+    if ( -not $? ){
+        throw "extract MinGW.zip failed"
+    }
 
     $execFile = (Join-Path $__cerberus__ "MinGW\bin\mingw-get.exe")
 
@@ -110,13 +127,8 @@ Trap {
 
     write-host $_.exception.message `n`n
     write-host ''
-    for($i=10;$i -gt 0;$i--)
-    {
-        sleep 1
-        write-host exit $i "'s later ...." 
-    }
 
-    break
+    exit 128 #break
 
 }
 
@@ -129,9 +141,5 @@ if (!$?){
     exit 128
 }
 
-copy ( Join-Path $__cerberus__ "scripts\bash.cmd" ) ( Join-Path $__cerberus__ "bash.cmd" ) 
-if (!$?){
-    exit 129
-}
 write-host Install Successfully !!
 exit 0
