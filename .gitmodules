@@ -1,6 +1,6 @@
 [submodule "cerbero.gstreamer"]
 	path = cerbero.gstreamer
-	url = https://github.com/Mingyiz/cerbero.git
+	url = git@github.com/Mingyiz/cerbero.git
 [submodule "cerbero.hacks"]
 	path = cerbero.hacks
-	url  = https://github.com/Mingyiz/cerbero.hacks.git
+	url  = git@github.com/Mingyiz/cerbero.hacks.git
