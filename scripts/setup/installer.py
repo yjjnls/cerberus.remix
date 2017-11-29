@@ -1,4 +1,5 @@
 import os
+import yaml
 __dir__ = os.path.dirname( __file__ )
 
 DIR = {}
