@@ -16,6 +16,7 @@ if ( -not $is_exits ){
 
 Function Download
 {
+    write-host download $args[0] to $args[1]
     $client=new-object System.Net.WebClient
     $client.DownloadFile( $args[0], $args[1] )
     if( !$?){
@@ -52,6 +53,11 @@ Function PythonCheck
         $url = -Join("https://github.com/yaml/pyyaml/archive/",$version,".zip")
         $cache_dir = (Join-Path $__cerberus__ "cache")
         $tarball = ( Join-Path $cache_dir "pyyaml.zip")
+        
+        if ( ! (Test-Path $cache_dir) ) {
+            md $cache_dir
+        }
+         
         Download $url $tarball
         if ( -not $? ){
             throw "donwload pyyaml failed."
@@ -127,6 +133,7 @@ Trap {
 
     write-host $_.exception.message `n`n
     write-host ''
+	break
 
     exit 128 #break
 
