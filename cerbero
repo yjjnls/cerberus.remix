@@ -1,2 +1,2 @@
 __dir__=$(cd $(/usr/bin/dirname ${BASH_SOURCE[0]}); pwd )
-$__dir__/cerbero.hacks/cerbero-uninstalled $@
+$__dir__/scripts/cerbero/cerbero-uninstalled $@
