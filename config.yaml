@@ -10,7 +10,7 @@ mirror:
           - www.opengl.org
           - www.openssl.org
           - www.tortall.net
-          - github.com
+          - github.com/freedesktop/gstreamer-sdk-windows-external-sdk
   git:
     'git://anongit.freedesktop.org/gstreamer-sdk/windows-external-sdk.git' : 'https://github.com/freedesktop/gstreamer-sdk-windows-external-sdk.git'
 
