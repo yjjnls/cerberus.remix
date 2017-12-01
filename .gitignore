@@ -2,3 +2,5 @@
 /.*
 /build
 .vscode
+/MinGW
+/releases
