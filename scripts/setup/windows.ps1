@@ -80,6 +80,21 @@ Function PythonCheck
 
     }
 
+
+    python -c "import gyp"
+    if ( -not $? ){
+
+        $version=3.12
+        $url = "https://github.com/Mingyiz/gyp.git"
+        git clone $url 
+        cd gyp
+        python setup.py install
+
+        if( -not $? ){
+            throw "install gyp failed."
+        }
+
+    }
 }
 
 Function InstallMinGW
