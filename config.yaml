@@ -24,24 +24,24 @@ releases:
 BB:
   version: pre-1
   state:   devel
-  cerbero:
-    path: scripts/cerbero
-    url: git@github.com:Mingyiz/cerbero.hacks.git
-    #url:https://github.com/Mingyiz/cerbero.hacks.git
-    branch: '1.12.3rc'
-    #commit: ~
-    
-  gstreamer:
-    path: scripts/cerbero/cerbero
-    url: git@github.com:Mingyiz/cerbero.git
-    #url:https://github.com/Mingyiz/cerbero.git
-    branch: '1.12'
-    #commit: ~
-    
-  ribbon:
-    path: scripts/ribbon
-    url: git@github.com:Mingyiz/ribbon.git
-    #url:https://github.com/Mingyiz/ribbon.git
-    branch: '0.9'
-    #commit: ~
+  git:
+    - cerbero:
+        path: scripts/cerbero
+        url: git@github.com:Mingyiz/cerbero.hacks.git
+        #url:https://github.com/Mingyiz/cerbero.hacks.git
+        branch: '1.12.3rc'
+        #commit: ~
+        
+    - gstreamer:
+        path: scripts/cerbero/cerbero
+        url: git@github.com:Mingyiz/cerbero.git
+        #url:https://github.com/Mingyiz/cerbero.git
+        branch: '1.12'
+        #commit: ~
+        
+    - ribbon:
+        path: scripts/ribbon        
+        url: git@github.com:Mingyiz/cerbero.ribbon.git
+        branch: '0.9'
+        #commit: ~
 

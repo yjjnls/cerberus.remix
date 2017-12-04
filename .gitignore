@@ -3,3 +3,6 @@
 .vscode
 /MinGW
 /releases
+/scripts/cerbero
+/scripts/ribbon
+/scripts/cerbero/cerbero
