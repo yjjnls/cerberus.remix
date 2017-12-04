@@ -45,6 +45,16 @@ Function PythonCheck
     if ( -not $? ){
         throw "Can not find python, please install it."        
     }
+
+    python -c "import yaml"
+    if ( -not $? ){ 
+        git clone https://github.com/yaml/pyyaml.git -b 3.12 pyyaml
+        cd pyyaml
+        python setup.py install
+        if ( -not $? ){
+            throw "Install pyyaml failed."
+        }
+    }
 }
 
 Function InstallMinGW
@@ -107,11 +117,5 @@ Trap {
 PythonCheck
 InstallMinGW
 
-$setup = (Join-Path $__dir__ 'installer.py')
-$setup
-if (!$?){
-    exit 128
-}
-
-write-host Install Successfully !!
+write-host MinGW Install Successfully !!
 exit 0

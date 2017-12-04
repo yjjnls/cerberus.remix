@@ -11,4 +11,9 @@ else
   HOME=$USERPROFILE
   cd $__dir__
 
+  if [ ! -z $1 ]; then
+      WD=${__WD__/\\//}
+      cd "$WD"
+      $@
+  fi
 fi
