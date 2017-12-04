@@ -1,6 +1,0 @@
-[submodule "scripts/cerbero"]
-	path = scripts/cerbero
-	url = git@github.com:Mingyiz/cerbero.hacks.git
-[submodule "scripts/ribbon"]
-	path = scripts/ribbon
-	url = git@github.com:Mingyiz/cerbero.ribbon.git
