@@ -11,6 +11,7 @@ mirror:
           - www.openssl.org
           - www.tortall.net
           - github.com/freedesktop/gstreamer-sdk-windows-external-sdk
+          - www.ashtonmason.net/wp-content/uploads/2017/01
   git:
     'git://anongit.freedesktop.org/gstreamer-sdk/windows-external-sdk.git' : 'https://github.com/freedesktop/gstreamer-sdk-windows-external-sdk.git'
 

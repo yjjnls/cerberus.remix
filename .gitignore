@@ -6,3 +6,5 @@
 /scripts/cerbero
 /scripts/ribbon
 /scripts/cerbero/cerbero
+
+*.py[cod]
