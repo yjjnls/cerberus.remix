@@ -45,56 +45,6 @@ Function PythonCheck
     if ( -not $? ){
         throw "Can not find python, please install it."        
     }
-
-    python -c "import yaml"
-    if ( -not $? ){
-
-        $version=3.12
-        $url = -Join("https://github.com/yaml/pyyaml/archive/",$version,".zip")
-        $cache_dir = (Join-Path $__cerberus__ "cache")
-        $tarball = ( Join-Path $cache_dir "pyyaml.zip")
-        
-        if ( ! (Test-Path $cache_dir) ) {
-            md $cache_dir
-        }
-         
-        Download $url $tarball
-        if ( -not $? ){
-            throw "donwload pyyaml failed."
-        }
-
-        $code  ="import zipfile;f=zipfile.ZipFile(r'" + $tarball + "','r');"
-        $code +="f.extractall(r'" + $cache_dir +"');"
-        python -c $code
-        if ( -not $? ){
-            throw "extract pyyaml failed"
-        }
-
-        $setupf = "pyyaml-" + $version 
-        $setupf = (Join-Path $cache_dir $setupf)
-        cd $setupf
-        python setup.py install
-        if( -not $? ){
-            throw "install pyyaml failed."
-        }
-
-    }
-
-
-    python -c "import gyp"
-    if ( -not $? ){
-
-        $version=3.12
-        $url = "https://github.com/Mingyiz/gyp.git"
-        git clone $url 
-        cd gyp
-        python setup.py install
-
-        if( -not $? ){
-            throw "install gyp failed."
-        }
-
-    }
 }
 
 Function InstallMinGW
