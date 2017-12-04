@@ -111,12 +111,33 @@ def MinGWLocation(mirror=False):
         return HTTPMirror(url)
     return url
 
-def InstallGYP():
-    url = 'https://github.com/Mingyiz/gyp.git'
+def LoadCerberos():
+    conf = config()
+    bb = conf['BB']
+    rootd=DIR['cerberus']
+    
+    for git in bb['git']:
+        for name, items in git.viewitems():
+            
+            relpath=items['path']
+            path = os.path.abspath( os.path.join( rootd, relpath ) )
+            gitd = os.path.dirname(path)
+            repo_name=os.path.basename(path)
+            url  = items['url']
+            commit = items.get('commit',None)
+            branch = items.get('branch',None)
+
+            if branch:
+                shell.call('git clone %s -b %s %s'%(url, branch,path))
+            if commit:
+                if not os.path.exists(path):
+                    shell.call('git clone %s %s'%(url,path))
+                shell.call('git reset –hard %s'%commit,path)
+
 
 if __name__ == "__main__":
     try:
         import gyp
     except:
         pysetup("gyp","https://github.com/Mingyiz/gyp.git")
-    config()
+    LoadCerberos()
