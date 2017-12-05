@@ -28,26 +28,28 @@ BB:
   git:
     - cerbero:
         path: scripts/cerbero
-        url: git@github.com:Mingyiz/cerbero.hacks.git
-        #url:https://github.com/Mingyiz/cerbero.hacks.git
+        #url: git@github.com:Mingyiz/cerbero.hacks.git
+        url: https://github.com/Mingyiz/cerbero.hacks.git
         branch: '1.12.3rc'
         #commit: ~
         
     - gstreamer:
         path: scripts/cerbero/cerbero
-        url: git@github.com:Mingyiz/cerbero.git
-        #url:https://github.com/Mingyiz/cerbero.git
+        #url: git@github.com:Mingyiz/cerbero.git
+        url: https://github.com/Mingyiz/cerbero.git
         branch: '1.12'
         #commit: ~
         
     - ribbon:
         path: scripts/ribbon        
-        url: git@github.com:Mingyiz/cerbero.ribbon.git
+        #url: git@github.com:Mingyiz/cerbero.ribbon.git
+        url: https://github.com/Mingyiz/cerbero.ribbon.git
         branch: '0.9'
         #commit: ~
         
     - wms:
-        path: scripts/wms        
-        url: git@github.com:Mingyiz/cerbero.wms.git
+        path: scripts/wms
+        #url: git@github.com:Mingyiz/cerbero.wms.git
+        url: https://github.com/Mingyiz/cerbero.wms.git
         branch: '0.2'
 
