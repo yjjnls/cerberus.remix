@@ -45,4 +45,9 @@ BB:
         url: git@github.com:Mingyiz/cerbero.ribbon.git
         branch: '0.9'
         #commit: ~
+        
+    - wms:
+        path: scripts/wms        
+        url: git@github.com:Mingyiz/cerbero.wms.git
+        branch: '0.2'
 
