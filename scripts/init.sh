@@ -9,7 +9,7 @@ else
   __dir__=$(cd $(/usr/bin/dirname ${BASH_SOURCE[0]}); pwd )
   source /usr/etc/profile
   HOME=$USERPROFILE
-  cd $__dir__
+  cd $__dir__/..
 
   if [ ! -z $1 ]; then
       WD=${__WD__/\\//}
