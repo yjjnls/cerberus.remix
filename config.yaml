@@ -10,13 +10,44 @@ mirror:
           - www.opengl.org
           - www.openssl.org
           - www.tortall.net
-          - github.com
+          - github.com/freedesktop/gstreamer-sdk-windows-external-sdk
+          - www.ashtonmason.net/wp-content/uploads/2017/01
   git:
     'git://anongit.freedesktop.org/gstreamer-sdk/windows-external-sdk.git' : 'https://github.com/freedesktop/gstreamer-sdk-windows-external-sdk.git'
 
 releases:
-  directory:
-    windows: 'd:/cerberus/releases'
-    linux: '/cerberus/releases'
-  repo: 'http://172.16.0.119/WMS/mirrors/releases'    
+  #directory:
+  #  windows: 'd:/cerberus/releases'
+  #  linux: '/cerberus/releases'
+  repo: 'http://172.16.0.119/WMS/mirrors/releases'
+  
+  
+BB:
+  version: pre-1
+  state:   devel
+  git:
+    - cerbero:
+        path: scripts/cerbero
+        url: git@github.com:Mingyiz/cerbero.hacks.git
+        #url:https://github.com/Mingyiz/cerbero.hacks.git
+        branch: '1.12.3rc'
+        #commit: ~
+        
+    - gstreamer:
+        path: scripts/cerbero/cerbero
+        url: git@github.com:Mingyiz/cerbero.git
+        #url:https://github.com/Mingyiz/cerbero.git
+        branch: '1.12'
+        #commit: ~
+        
+    - ribbon:
+        path: scripts/ribbon        
+        url: git@github.com:Mingyiz/cerbero.ribbon.git
+        branch: '0.9'
+        #commit: ~
+        
+    - wms:
+        path: scripts/wms        
+        url: git@github.com:Mingyiz/cerbero.wms.git
+        branch: '0.2'
 

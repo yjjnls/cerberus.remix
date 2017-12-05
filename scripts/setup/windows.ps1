@@ -16,6 +16,7 @@ if ( -not $is_exits ){
 
 Function Download
 {
+    write-host download $args[0] to $args[1]
     $client=new-object System.Net.WebClient
     $client.DownloadFile( $args[0], $args[1] )
     if( !$?){
@@ -46,34 +47,14 @@ Function PythonCheck
     }
 
     python -c "import yaml"
-    if ( -not $? ){
-
-        $version=3.12
-        $url = -Join("https://github.com/yaml/pyyaml/archive/",$version,".zip")
-        $cache_dir = (Join-Path $__cerberus__ "cache")
-        $tarball = ( Join-Path $cache_dir "pyyaml.zip")
-        Download $url $tarball
-        if ( -not $? ){
-            throw "donwload pyyaml failed."
-        }
-
-        $code  ="import zipfile;f=zipfile.ZipFile(r'" + $tarball + "','r');"
-        $code +="f.extractall(r'" + $cache_dir +"');"
-        python -c $code
-        if ( -not $? ){
-            throw "extract pyyaml failed"
-        }
-
-        $setupf = "pyyaml-" + $version 
-        $setupf = (Join-Path $cache_dir $setupf)
-        cd $setupf
+    if ( -not $? ){ 
+        git clone https://github.com/yaml/pyyaml.git -b 3.12 pyyaml
+        cd pyyaml
         python setup.py install
-        if( -not $? ){
-            throw "install pyyaml failed."
+        if ( -not $? ){
+            throw "Install pyyaml failed."
         }
-
     }
-
 }
 
 Function InstallMinGW
@@ -127,6 +108,7 @@ Trap {
 
     write-host $_.exception.message `n`n
     write-host ''
+	break
 
     exit 128 #break
 
@@ -135,11 +117,5 @@ Trap {
 PythonCheck
 InstallMinGW
 
-$setup = (Join-Path $__dir__ 'installer.py')
-$setup
-if (!$?){
-    exit 128
-}
-
-write-host Install Successfully !!
+write-host MinGW Install Successfully !!
 exit 0

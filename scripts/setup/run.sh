@@ -1,2 +1,3 @@
 __dir__=$(cd $(/usr/bin/dirname ${BASH_SOURCE[0]}); pwd )
-$__dir__/scripts/cerbero/cerbero-uninstalled $@
+
+python $__dir__/installer.py

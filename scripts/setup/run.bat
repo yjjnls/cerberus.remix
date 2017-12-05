@@ -14,3 +14,10 @@ if %ERRORLEVEL% neq 0 (
    pause
    exit/b 1
 ) 
+
+pushd %~dp0\..\..
+bash.bat python scripts/setup/installer.py
+set ret=%ERRORLEVEL%
+popd
+pause
+exit/b %ret%
