@@ -28,26 +28,29 @@ BB:
   git:
     - cerbero:
         path: scripts/cerbero
-        url: git@github.com:Mingyiz/cerbero.hacks.git
-        #url:https://github.com/Mingyiz/cerbero.hacks.git
+        #url: git@github.com:Mingyiz/cerbero.hacks.git
+        url: https://github.com/Mingyiz/cerbero.hacks.git
         branch: '1.12.3rc'
         #commit: ~
         
     - gstreamer:
         path: scripts/cerbero/cerbero
-        url: git@github.com:Mingyiz/cerbero.git
-        #url:https://github.com/Mingyiz/cerbero.git
-        branch: '1.12'
-        #commit: ~
+        #url: git@github.com:Mingyiz/cerbero.git
+        url: https://github.com/Mingyiz/cerbero.git
+        #branch: '1.12'
+        #49ec6ce  on 7 Sep (tp-m committed with sdroege recipes: gstreamer-1.0: ship tracer plugin)
+        commit: '49ec6ce019218d391a10a9ff5fd58044fcc2b203' 
         
     - ribbon:
         path: scripts/ribbon        
-        url: git@github.com:Mingyiz/cerbero.ribbon.git
+        #url: git@github.com:Mingyiz/cerbero.ribbon.git
+        url: https://github.com/Mingyiz/cerbero.ribbon.git
         branch: '0.9'
         #commit: ~
         
     - wms:
-        path: scripts/wms        
-        url: git@github.com:Mingyiz/cerbero.wms.git
+        path: scripts/wms
+        #url: git@github.com:Mingyiz/cerbero.wms.git
+        url: https://github.com/Mingyiz/cerbero.wms.git
         branch: '0.2'
 

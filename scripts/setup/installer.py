@@ -129,9 +129,11 @@ def LoadCerberos():
 
             if branch:
                 shell.call('git clone %s -b %s %s'%(url, branch,path))
+
             if commit:
                 if not os.path.exists(path):
                     shell.call('git clone %s %s'%(url,path))
+                shell.call('git reset --hard %s'%commit,path)
 
 if __name__ == "__main__":
     try:
